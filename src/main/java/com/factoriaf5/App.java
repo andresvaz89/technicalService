@@ -20,7 +20,7 @@ public class App {
         // Verificar si hay personas en la lista antes de continuar
         if (!persons.isEmpty()) {
             // Obtener el ID de la primera persona
-            int idToUpdate = persons.get(0).getId();  // Obtener el ID de Juan
+            int idToUpdate = persons.get(0).getId();  // Obtener el ID de ali y mick
 
             // Actualizar persona con el ID obtenido
             PersonCRUD.updatePerson(idToUpdate, "Pepe", 30);
