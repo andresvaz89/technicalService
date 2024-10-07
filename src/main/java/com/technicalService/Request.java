@@ -1,12 +1,12 @@
-package com.factoriaf5;
+package com.technicalService;
 
-public class Person {
+public class Request {
     private int id;
     private String name;
     private int age;
 
     // Constructor with parameters
-    public Person(int id, String name, int age) {
+    public Request(int id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -39,7 +39,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Request{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +

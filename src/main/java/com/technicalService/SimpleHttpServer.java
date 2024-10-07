@@ -1,4 +1,4 @@
-package com.factoriaf5;
+package com.technicalService;
 
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpHandler;
@@ -14,17 +14,17 @@ import java.util.List;
 
 public class SimpleHttpServer {
 
-    private static List<Person> persons = new ArrayList<>(); // In-memory storage
+    private static List<Request> requests = new ArrayList<>(); // In-memory storage
 
     public static void main(String[] args) throws IOException {
         HttpServer server = HttpServer.create(new java.net.InetSocketAddress(8080), 0);
-        server.createContext("/api/persons", new PersonHandler());
+        server.createContext("/api/requests", new RequestHandler());
         server.setExecutor(null); // creates a default executor
         server.start();
         System.out.println("Server started on port 8080");
     }
 
-    static class PersonHandler implements HttpHandler {
+    static class RequestHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
             String response;
@@ -32,38 +32,38 @@ public class SimpleHttpServer {
 
             switch (exchange.getRequestMethod()) {
                 case "POST":
-                    // Create a new person
-                    Person newPerson = readPersonFromRequest(exchange);
-                    persons.add(newPerson);
-                    response = "Person added successfully!";
+                    // Create a new request
+                    Request newRequest = readRequestFromRequest(exchange);
+                    requests.add(newRequest);
+                    response = "Request added successfully!";
                     break;
 
                 case "GET":
-                    // Get all persons
-                    response = persons.toString();
+                    // Get all requests
+                    response = requests.toString();
                     break;
 
                 case "PUT":
-                    // Update a person
+                    // Update a request
                     int idToUpdate = Integer.parseInt(exchange.getRequestURI().getPath().split("/")[3]);
-                    Person updatedPerson = readPersonFromRequest(exchange);
-                    if (idToUpdate < persons.size()) {
-                        persons.set(idToUpdate, updatedPerson);
-                        response = "Person updated successfully!";
+                    Request updatedRequest = readRequestFromRequest(exchange);
+                    if (idToUpdate < requests.size()) {
+                        requests.set(idToUpdate, updatedRequest);
+                        response = "Request updated successfully!";
                     } else {
-                        response = "Person not found.";
+                        response = "Request not found.";
                         statusCode = 404;
                     }
                     break;
 
                 case "DELETE":
-                    // Delete a person
+                    // Delete a request
                     int idToDelete = Integer.parseInt(exchange.getRequestURI().getPath().split("/")[3]);
-                    if (idToDelete < persons.size()) {
-                        persons.remove(idToDelete);
-                        response = "Person deleted successfully!";
+                    if (idToDelete < requests.size()) {
+                        requests.remove(idToDelete);
+                        response = "Request deleted successfully!";
                     } else {
-                        response = "Person not found.";
+                        response = "Request not found.";
                         statusCode = 404;
                     }
                     break;
@@ -80,7 +80,7 @@ public class SimpleHttpServer {
             os.close();
         }
 
-        private Person readPersonFromRequest(HttpExchange exchange) throws IOException {
+        private Request readRequestFromRequest(HttpExchange exchange) throws IOException {
             InputStream is = exchange.getRequestBody();
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             StringBuilder sb = new StringBuilder();
@@ -94,9 +94,9 @@ public class SimpleHttpServer {
             String name = data[0].split(":")[1].replace("\"", "").trim();
             int age = Integer.parseInt(data[1].split(":")[1].trim());
 
-            // Use persons.size() to assign a unique ID
-            int id = persons.size();
-            return new Person(id, name, age);
+            // Use requests.size() to assign a unique ID
+            int id = requests.size();
+            return new Request(id, name, age);
         }
     }
 }

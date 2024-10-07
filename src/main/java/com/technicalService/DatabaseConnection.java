@@ -1,4 +1,4 @@
-package com.factoriaf5;
+package com.technicalService;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
