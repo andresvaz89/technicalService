@@ -8,35 +8,34 @@ public class App {
         DatabaseConnection.startServer();
 
         // Crear la tabla de personas
-        CreateTable.createRequestTable();
+        CreateTable.createSolicitudTable();
 
         // Insertar una persona
-        RequestCRUD.insertRequest("Ali", 25);
-        RequestCRUD.insertRequest("Mick", 22);
+        SolicitudCRUD.insertSolicitud("Ali", 25);
+        SolicitudCRUD.insertSolicitud("Mick", 22);
 
         // Leer todas las Requestas
-        List<Request> requests = RequestCRUD.getAllRequests();
+        List<Solicitud> solicitudes = SolicitudCRUD.getAllSolicitudes();
 
         // Verificar si hay personas en la lista antes de continuar
-        if (!requests.isEmpty()) {
+        if (!solicitudes.isEmpty()) {
             // Obtener el ID de la primera persona
-            int idToUpdate = requests.get(0).getId();  // Obtener el ID de ali y mick
+            int idToUpdate = solicitudes.get(0).getIdSolicitud();  // Obtener el ID de ali y mick
 
             // Actualizar persona con el ID obtenido
-            RequestCRUD.updateRequest(idToUpdate, "Aircon issue", 30);
+            SolicitudCRUD.updateSolicitud(idToUpdate, "Aircon issue", 30);
 
             // Leer todas las personas nuevamente para verificar la actualización
-            requests = RequestCRUD.getAllRequests();
-            System.out.println("Requests's list after update:");
-            for (Request request : requests) {
-                System.out.println("ID: " + request.getId() + ", Name: " + request.getName() + ", Age: " + request.getAge());
+            solicitudes = SolicitudCRUD.getAllSolicitudes();
+            System.out.println("Lista de solicitudes después de actualizar:");
+            for (Solicitud solicitud : solicitudes) {
+                System.out.println("ID: " + solicitud.getIdSolicitud() + ", Name: " + solicitud.getName() + ", Age: " + solicitud.getAge());
             }
 
             // Eliminar persona con el ID obtenido
-            RequestCRUD.deleteRequest(idToUpdate);
+            SolicitudCRUD.deleteSolicitud(idToUpdate);
         } else {
-            System.out.println("No hay requests en la base de datos.");
+            System.out.println("No hay solicitudes en la base de datos.");
         }
     }
 }
-

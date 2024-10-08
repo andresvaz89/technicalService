@@ -1,0 +1,12 @@
+Formato tabla sql
+
+
++ Key: ID_Solicitud: auto_int
++ Foreign_key: ID_Tecnico: auto_int
++ Foreign_key: ID_Cliente: auto_int
++ Descripcion: String
++ Tema: String
++ Fecha_Creacion : Date
++ Fecha_Completado: Date
++ Fecha_Asistencia : Date
++ Estado: String {EN_CURSO, FINALIZADA} -Prioridad: String {ALTO, MEDIO BAJA, NINGUNA}

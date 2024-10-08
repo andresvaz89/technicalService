@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SimpleHttpServer {
 
-    private static List<Request> requests = new ArrayList<>(); // In-memory storage
+    private static List<Solicitud> requests = new ArrayList<>(); // In-memory storage
 
     public static void main(String[] args) throws IOException {
         HttpServer server = HttpServer.create(new java.net.InetSocketAddress(8080), 0);
@@ -33,7 +33,7 @@ public class SimpleHttpServer {
             switch (exchange.getRequestMethod()) {
                 case "POST":
                     // Create a new request
-                    Request newRequest = readRequestFromRequest(exchange);
+                    Solicitud newRequest = readRequestFromRequest(exchange);
                     requests.add(newRequest);
                     response = "Request added successfully!";
                     break;
@@ -46,7 +46,7 @@ public class SimpleHttpServer {
                 case "PUT":
                     // Update a request
                     int idToUpdate = Integer.parseInt(exchange.getRequestURI().getPath().split("/")[3]);
-                    Request updatedRequest = readRequestFromRequest(exchange);
+                    Solicitud updatedRequest = readRequestFromRequest(exchange);
                     if (idToUpdate < requests.size()) {
                         requests.set(idToUpdate, updatedRequest);
                         response = "Request updated successfully!";
@@ -80,7 +80,7 @@ public class SimpleHttpServer {
             os.close();
         }
 
-        private Request readRequestFromRequest(HttpExchange exchange) throws IOException {
+        private Solicitud readRequestFromRequest(HttpExchange exchange) throws IOException {
             InputStream is = exchange.getRequestBody();
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             StringBuilder sb = new StringBuilder();
@@ -95,8 +95,8 @@ public class SimpleHttpServer {
             int age = Integer.parseInt(data[1].split(":")[1].trim());
 
             // Use requests.size() to assign a unique ID
-            int id = requests.size();
-            return new Request(id, name, age);
+            int ID_Solicitud = requests.size();
+            return new Solicitud(ID_Solicitud, name, age);
         }
     }
 }
