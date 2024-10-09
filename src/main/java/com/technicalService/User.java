@@ -1,9 +1,9 @@
 package com.technicalService;
 
 public class User {
-    private int id_usuario;
-    private String username;
-    private String password;
+    protected int id_usuario;
+    protected String username;
+    protected String password;
 
     // Constructor with parameters constructor y sus parámetros
     public User (int id_usuario, String username, String password) {
