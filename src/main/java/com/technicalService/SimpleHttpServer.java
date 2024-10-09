@@ -95,11 +95,10 @@ public class SimpleHttpServer {
             int age = Integer.parseInt(data[1].split(":")[1].trim());
 
             // Use requests.size() to assign a unique ID
-            int id = requests.size();
-            return new Request(id, name, age);
+            int ID_Solicitud = requests.size();
+            return new Request(ID_Solicitud, name, age);
         }
     }
 }
-
 
 

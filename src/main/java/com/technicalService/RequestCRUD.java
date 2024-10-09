@@ -9,8 +9,8 @@ import java.util.List;
 
 public class RequestCRUD {
     // Insertar una request en la base de datos
-    public static void insertRequest(String name, int age) {
-        String sql = "INSERT INTO requests (name, age) VALUES (?, ?)";
+    public static void insertSolicitud(String name, int age) {
+        String sql = "INSERT INTO solicitudes (name, age) VALUES (?, ?)";
         try (Connection connection = DatabaseConnection.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, name);
@@ -23,41 +23,41 @@ public class RequestCRUD {
     }
 
     // Obtener todas las requests de la base de datos
-    public static List<Request> getAllRequests() {
-        List<Request> requests = new ArrayList<>();
-        String sql = "SELECT * FROM requests";
+    public static List<Request> getAllSolicitudes() {
+        List<Request> solicitudes = new ArrayList<>();
+        String sql = "SELECT * FROM solicitudes";
         try (Connection connection = DatabaseConnection.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
-                int id = rs.getInt("id");
+                int ID_Solicitud = rs.getInt("ID_Solicitud");
                 String name = rs.getString("name");
                 int age = rs.getInt("age");
-                requests.add(new Request(id, name, age));
+                solicitudes.add(new Request(ID_Solicitud, name, age));
             }
-            System.out.println("Todas las personas recuperadas: " + requests);
+            System.out.println("Todas las solicitudes recuperadas: " + solicitudes);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return requests;
+        return solicitudes;
     }
 
     // Actualizar una request en la base de datos
-    public static void updateRequest(int id, String name, int age) {
-        String sql = "UPDATE requests SET name = ?, age = ? WHERE id = ?";
+    public static void updateSolicitud(int ID_Solicitud, String name, int age) {
+        String sql = "UPDATE solicitudes SET name = ?, age = ? WHERE ID_Solicitud = ?";
     
         try (Connection connection = DatabaseConnection.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, name);
             pstmt.setInt(2, age);
-            pstmt.setInt(3, id);
+            pstmt.setInt(3, ID_Solicitud);
     
             int rowsUpdated = pstmt.executeUpdate();
             if (rowsUpdated > 0) {
-                System.out.println("Request with ID " + id + " updated successfully.");
+                System.out.println("Solicitudes con ID " + ID_Solicitud + " actualizadas correctamente.");
                 System.out.println("New values: Name = " + name + ", Age = " + age);
             } else {
-                System.out.println("No request found with ID " + id + " to update.");
+                System.out.println("No se encontaron solicitudes con el ID_Solicitud " + ID_Solicitud + " para actualizar.");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -65,21 +65,20 @@ public class RequestCRUD {
     }
 
     // Eliminar una request de la base de datos
-    public static void deleteRequest(int id) {
-        String sql = "DELETE FROM requests WHERE id = ?";
+    public static void deleteSolicitud(int ID_Solicitud) {
+        String sql = "DELETE FROM solicitudes WHERE ID_Solicitud= ?";
         try (Connection connection = DatabaseConnection.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, id);
+            pstmt.setInt(1,  ID_Solicitud);
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("Request eliminada: " + id);
+                System.out.println("Solicitud eliminada: " + ID_Solicitud);
             } else {
-                System.out.println("Request no encontrada para el ID: " + id);
+                System.out.println("Solicitud no encontrada para el ID_Solicitud: " + ID_Solicitud);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 }
-
 

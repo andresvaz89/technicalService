@@ -1,24 +1,24 @@
 package com.technicalService;
 
 public class Request {
-    private int id;
+    private int ID_Solicitud;
     private String name;
     private int age;
 
     // Constructor with parameters
-    public Request(int id, String name, int age) {
-        this.id = id;
+    public Request(int ID_Solicitud, String name, int age) {
+        this.ID_Solicitud = ID_Solicitud;
         this.name = name;
         this.age = age;
     }
 
     // Getters and Setters
-    public int getId() {
-        return id;
+    public int getIdSolicitud() {
+        return ID_Solicitud;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int ID_Solicitud) {
+        this.ID_Solicitud = ID_Solicitud;
     }
 
     public String getName() {
@@ -39,8 +39,8 @@ public class Request {
 
     @Override
     public String toString() {
-        return "Request{" +
-                "id=" + id +
+        return "Solicitud{" +
+                "ID_Solicitud=" + ID_Solicitud +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 '}';
