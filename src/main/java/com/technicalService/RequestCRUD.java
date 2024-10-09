@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SolicitudCRUD {
+public class RequestCRUD {
     // Insertar una request en la base de datos
     public static void insertSolicitud(String name, int age) {
         String sql = "INSERT INTO solicitudes (name, age) VALUES (?, ?)";
@@ -23,8 +23,8 @@ public class SolicitudCRUD {
     }
 
     // Obtener todas las requests de la base de datos
-    public static List<Solicitud> getAllSolicitudes() {
-        List<Solicitud> solicitudes = new ArrayList<>();
+    public static List<Request> getAllSolicitudes() {
+        List<Request> solicitudes = new ArrayList<>();
         String sql = "SELECT * FROM solicitudes";
         try (Connection connection = DatabaseConnection.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -33,7 +33,7 @@ public class SolicitudCRUD {
                 int ID_Solicitud = rs.getInt("ID_Solicitud");
                 String name = rs.getString("name");
                 int age = rs.getInt("age");
-                solicitudes.add(new Solicitud(ID_Solicitud, name, age));
+                solicitudes.add(new Request(ID_Solicitud, name, age));
             }
             System.out.println("Todas las solicitudes recuperadas: " + solicitudes);
         } catch (SQLException e) {

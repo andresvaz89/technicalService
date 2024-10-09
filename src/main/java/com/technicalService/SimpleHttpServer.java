@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SimpleHttpServer {
 
-    private static List<Solicitud> requests = new ArrayList<>(); // In-memory storage
+    private static List<Request> requests = new ArrayList<>(); // In-memory storage
 
     public static void main(String[] args) throws IOException {
         HttpServer server = HttpServer.create(new java.net.InetSocketAddress(8080), 0);
@@ -33,7 +33,7 @@ public class SimpleHttpServer {
             switch (exchange.getRequestMethod()) {
                 case "POST":
                     // Create a new request
-                    Solicitud newRequest = readRequestFromRequest(exchange);
+                    Request newRequest = readRequestFromRequest(exchange);
                     requests.add(newRequest);
                     response = "Request added successfully!";
                     break;
@@ -46,7 +46,7 @@ public class SimpleHttpServer {
                 case "PUT":
                     // Update a request
                     int idToUpdate = Integer.parseInt(exchange.getRequestURI().getPath().split("/")[3]);
-                    Solicitud updatedRequest = readRequestFromRequest(exchange);
+                    Request updatedRequest = readRequestFromRequest(exchange);
                     if (idToUpdate < requests.size()) {
                         requests.set(idToUpdate, updatedRequest);
                         response = "Request updated successfully!";
@@ -80,7 +80,7 @@ public class SimpleHttpServer {
             os.close();
         }
 
-        private Solicitud readRequestFromRequest(HttpExchange exchange) throws IOException {
+        private Request readRequestFromRequest(HttpExchange exchange) throws IOException {
             InputStream is = exchange.getRequestBody();
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             StringBuilder sb = new StringBuilder();
@@ -96,7 +96,7 @@ public class SimpleHttpServer {
 
             // Use requests.size() to assign a unique ID
             int ID_Solicitud = requests.size();
-            return new Solicitud(ID_Solicitud, name, age);
+            return new Request(ID_Solicitud, name, age);
         }
     }
 }

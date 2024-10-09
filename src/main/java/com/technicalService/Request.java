@@ -1,12 +1,12 @@
 package com.technicalService;
 
-public class Solicitud {
+public class Request {
     private int ID_Solicitud;
     private String name;
     private int age;
 
     // Constructor with parameters
-    public Solicitud(int ID_Solicitud, String name, int age) {
+    public Request(int ID_Solicitud, String name, int age) {
         this.ID_Solicitud = ID_Solicitud;
         this.name = name;
         this.age = age;
