@@ -1,15 +1,16 @@
 package com.technicalService;
 
-public class Technician {
-    public int id;
-    public String name;
-    public String apellido;
+public class Technician extends User {
+    private int id;
+    private String name;
+    private String apellido;
 
     // Constructor with parameters
-    public Technician (int id, String name, String apellido, String Username, String Password) {
-        super(Username, Password);
+    public Technician (int id, String name, String apellido, int id_usuario, String username, String password) {
+        super(id_usuario, username, password);
         this.id = id;
         this.name = name;
+        this.apellido = apellido;
         
     }
 
@@ -41,9 +42,10 @@ public class Technician {
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password=" + password +
+                "id =" + id +
+                ", name ='" + name + '\'' +
+                ", apellido =" + apellido + 
+                ", password =" + password +
                 '}';
     }
 }
