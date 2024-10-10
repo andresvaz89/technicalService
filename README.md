@@ -1,4 +1,4 @@
-"# Technical Service" 
+# Technical Service
 
 Este programa permite crear solicitudes dirigidas al personal técnico, registra las fechas de creación, consulta y modificación, genera lista de solicitudes realizadas y permite darlas por concluidas.
 La solicitud contendrá los siguientes datos: nombre del solicitante, fecha de la solicitud, tema de la consulta y descripción.
@@ -9,6 +9,13 @@ La solicitud contendrá los siguientes datos: nombre del solicitante, fecha de l
 <h2>Personal técnico</h2>
 <p>El departamento técnico podrá consultar todas la solicitudes en orden de creación (ASC) así como saber si una solicitud está en curso.
 
+	Diagrama de Flujo
+
 <p align="center">
-	  <img src="https://github.com/andresvaz89/technicalService/blob/model/Screenshot%202024-10-08%20122356.png" />
+	  <img src="https://github.com/andresvaz89/technicalService/blob/model/Screenshot%202024-10-10%20112749.png" width=50% height=50% />
+</p>
+
+	Diagrama de Clases
+<p align="center">
+	  <img src="https://github.com/andresvaz89/technicalService/blob/model/Screenshot%202024-10-08%20122356.png" width=50% height=50% />
 </p>
