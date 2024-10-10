@@ -6,7 +6,7 @@ La solicitud contendrá los siguientes datos: nombre del solicitante, fecha de l
 <h2>Cliente</h2>
 <p>Los clientes podrán validar su usuario, crear nuevas solicitudes para soporte técnico, visualizarlas, y actualizarlas.</p>
 </br>
-<h2>Personal técnico</h>
+<h2>Personal técnico</h2>
 <p>El departamento técnico podrá consultar todas la solicitudes en orden de creación (ASC) así como saber si una solicitud está en curso.
 
 <p align="center">
