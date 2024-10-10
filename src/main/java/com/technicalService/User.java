@@ -5,7 +5,7 @@ public class User {
     protected String username;
     protected String password;
 
-    //constructor vacio
+    //constructor vacio para incializar sin que pida parámetro
     public User (){
 
     }
