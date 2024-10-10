@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CreateTable {
+public class RequestTable {
     public static void createRequestTable() {
         String sql = "CREATE TABLE IF NOT EXISTS solicitudes ("
                 + "ID_Solicitud INT AUTO_INCREMENT PRIMARY KEY,"

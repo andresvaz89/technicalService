@@ -6,17 +6,13 @@ public class App {
     public static void main(String[] args) {
         // Iniciar el servidor H2
         DatabaseConnection.startServer();
-
         // Crear la tabla de personas
-        CreateTable.createRequestTable();
-
+        RequestTable.createRequestTable();
         // Insertar una persona
         RequestCRUD.insertSolicitud("Ali", 25);
         RequestCRUD.insertSolicitud("Mick", 22);
-
         // Leer todas las Requestas
         List<Request> solicitudes = RequestCRUD.getAllSolicitudes();
-
         // Verificar si hay personas en la lista antes de continuar
         if (!solicitudes.isEmpty()) {
             // Obtener el ID de la primera persona
@@ -31,7 +27,6 @@ public class App {
             for (Request solicitud : solicitudes) {
                 System.out.println("ID: " + solicitud.getIdSolicitud() + ", Name: " + solicitud.getName() + ", Age: " + solicitud.getAge());
             }
-
             // Eliminar persona con el ID obtenido
             RequestCRUD.deleteSolicitud(idToUpdate);
         } else {

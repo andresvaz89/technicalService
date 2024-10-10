@@ -1,10 +1,11 @@
+/*
 package com.technicalService;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class TechnicianControler {
+public class TechnicianCRUD {
 
     public void listarSolicictudes() {
         String sql = "SELECT * FROM tecnico ( "
@@ -27,3 +28,5 @@ public class TechnicianControler {
         }
     }
 }
+*/
+
