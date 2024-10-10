@@ -5,6 +5,11 @@ public class User {
     protected String username;
     protected String password;
 
+    //constructor vacio
+    public User (){
+
+    }
+
     // Constructor with parameters constructor y sus parámetros
     public User (int id_usuario, String username, String password) {
         this.id_usuario = id_usuario;
