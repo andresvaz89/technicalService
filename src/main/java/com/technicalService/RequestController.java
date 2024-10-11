@@ -97,16 +97,10 @@ public class RequestController {
             String estado = "EN_CURSO"; // Estado inicial por defecto
             String prioridad = "NINGUNA"; // Prioridad inicial por defecto
 
-<<<<<<< HEAD:src/main/java/com/technicalService/SimpleHttpServer.java
-            // Use requests.size() to assign a unique ID
-            int ID_Solicitud = requests.size();
-            return new Request(ID_Solicitud, name, age);
-=======
             // Use requests.size() to assign a unique ID (no es necesario aquí, ya que se gestionan por RequestCRUD)
             return new Request(ID_Solicitud, ID_Tecnico, ID_Cliente, descripcion, tema,
                                fechaCreacion, fechaCompletado, fechaAsistencia,
                                estado, prioridad);
->>>>>>> dev:src/main/java/com/technicalService/RequestController.java
         }
     }
 }

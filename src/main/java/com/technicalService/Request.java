@@ -3,20 +3,6 @@ package com.technicalService;
 import java.util.Date;
 
 public class Request {
-<<<<<<< HEAD
-    private int ID_Solicitud;
-    private String name;
-    private int age;
-
-    // Constructor with parameters
-    public Request(int ID_Solicitud, String name, int age) {
-        this.ID_Solicitud = ID_Solicitud;
-        this.name = name;
-        this.age = age;
-    }
-
-    // Getters and Setters
-=======
     private int ID_Solicitud;        // ID de la solicitud
     private int ID_Tecnico;          // ID del técnico (FK)
     private int ID_Cliente;           // ID del cliente (FK)
@@ -46,16 +32,11 @@ public class Request {
     }
 
     // Getters y Setters
->>>>>>> dev
     public int getIdSolicitud() {
         return ID_Solicitud;
     }
 
-<<<<<<< HEAD
-    public void setId(int ID_Solicitud) {
-=======
     public void setIdSolicitud(int ID_Solicitud) {
->>>>>>> dev
         this.ID_Solicitud = ID_Solicitud;
     }
 
@@ -135,10 +116,6 @@ public class Request {
     public String toString() {
         return "Solicitud{" +
                 "ID_Solicitud=" + ID_Solicitud +
-<<<<<<< HEAD
-                ", name='" + name + '\'' +
-                ", age=" + age +
-=======
                 ", ID_Tecnico=" + ID_Tecnico +
                 ", ID_Cliente=" + ID_Cliente +
                 ", descripcion='" + descripcion + '\'' +
@@ -148,7 +125,6 @@ public class Request {
                 ", fechaAsistencia=" + fechaAsistencia +
                 ", estado='" + estado + '\'' +
                 ", prioridad='" + prioridad + '\'' +
->>>>>>> dev
                 '}';
     }
 }
