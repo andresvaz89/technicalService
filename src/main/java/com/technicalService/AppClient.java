@@ -20,8 +20,10 @@ public class AppClient{
         RequestCRUD.insertSolicitud(3, 1, "Problema de conexión a Internet en Factoría f5", "Conectividad", new Date(), null, null, "EN_CURSO", "MEDIO");
         RequestCRUD.insertSolicitud(4, 3, "Prueba de solicitud", "Conectividad", new Date(), null, null, "EN_CURSO", "MEDIO");
         RequestCRUD.insertSolicitud(2, 3, "Prueba dos de solicitud", "Conectividad", new Date(), null, null, "EN_CURSO", "MEDIO");
-        
+        System.out.println();
+        System.out.println("-----------------------------------------------");
         System.out.println("Bienvenido cliente: " + nombreC + " " + apellidoC);
+        System.out.println("-----------------------------------------------");
 
         do{
 
@@ -110,6 +112,7 @@ public class AppClient{
             }
             break;
             case 5:
+            App.main(args);
             break;
                     
             default:

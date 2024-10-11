@@ -20,7 +20,10 @@ public class AppTechnician{
         RequestCRUD.insertSolicitud(1, 1, "Problema de conexión a Internet en Factoría f5", "Conectividad", new Date(), null, null, "EN_CURSO", "MEDIO");
         RequestCRUD.insertSolicitud(1, 2, "Prueba de solicitud", "Conectividad", new Date(), null, null, "EN_CURSO", "MEDIO");
         RequestCRUD.insertSolicitud(2, 2, "Prueba dos de solicitud", "Conectividad", new Date(), null, null, "FINALIZADA", "MEDIO");
+        System.out.println();
+        System.out.println("-----------------------------------------------");
         System.out.println("Bienvenido tecnico: " + nombreT + " " + apellidoT);
+        System.out.println("-----------------------------------------------");
 
         do{
 
@@ -104,6 +107,7 @@ public class AppTechnician{
             }
             break;
             case 6:
+            App.main(args);
             break;
                     
             default:
