@@ -7,8 +7,8 @@ public class App {
 
     public static void main(String[] args) {
 
-        DatabaseConnection.startServer();
-        UserTable.createUserTable();
+        //DatabaseConnection.startServer();
+        //UserTable.createUserTable();
         Scanner sc = new Scanner(System.in);
         Technician tecnico = new Technician();
         Client cliente = new Client();
@@ -34,7 +34,8 @@ public class App {
         TechnicianCRUD.insertTecnico(2, "Javier", "Poncela");
         TechnicianCRUD.insertTecnico(3, "Adriana", "Costales");
         TechnicianCRUD.insertTecnico(4, "Raul", "Suarez");
-
+        System.out.println();
+        System.out.println("---------------------------------------");
         System.out.println("BIENVENIDO AL PORTAL DE SOPORTE TECNICO");
         System.out.println("---------------------------------------");
 
