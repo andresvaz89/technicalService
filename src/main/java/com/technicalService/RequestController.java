@@ -9,12 +9,9 @@ import java.io.OutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
-public class SimpleHttpServer {
-
-    private static List<Request> requests = new ArrayList<>(); // In-memory storage
+public class RequestController {
 
     public static void main(String[] args) throws IOException {
         HttpServer server = HttpServer.create(new java.net.InetSocketAddress(8080), 0);
@@ -34,38 +31,36 @@ public class SimpleHttpServer {
                 case "POST":
                     // Create a new request
                     Request newRequest = readRequestFromRequest(exchange);
-                    requests.add(newRequest);
+                    RequestCRUD.insertSolicitud(newRequest.getIdTecnico(), newRequest.getIdCliente(),
+                            newRequest.getDescripcion(), newRequest.getTema(),
+                            newRequest.getFechaCreacion(), newRequest.getFechaCompletado(),
+                            newRequest.getFechaAsistencia(), newRequest.getEstado(),
+                            newRequest.getPrioridad());
                     response = "Request added successfully!";
                     break;
 
                 case "GET":
                     // Get all requests
-                    response = requests.toString();
+                    response = RequestCRUD.getAllSolicitudes().toString();
                     break;
 
                 case "PUT":
                     // Update a request
                     int idToUpdate = Integer.parseInt(exchange.getRequestURI().getPath().split("/")[3]);
                     Request updatedRequest = readRequestFromRequest(exchange);
-                    if (idToUpdate < requests.size()) {
-                        requests.set(idToUpdate, updatedRequest);
-                        response = "Request updated successfully!";
-                    } else {
-                        response = "Request not found.";
-                        statusCode = 404;
-                    }
+                    RequestCRUD.updateSolicitud(idToUpdate, updatedRequest.getIdTecnico(),
+                            updatedRequest.getIdCliente(), updatedRequest.getDescripcion(),
+                            updatedRequest.getTema(), updatedRequest.getFechaCreacion(),
+                            updatedRequest.getFechaCompletado(), updatedRequest.getFechaAsistencia(),
+                            updatedRequest.getEstado(), updatedRequest.getPrioridad());
+                    response = "Request updated successfully!";
                     break;
 
                 case "DELETE":
                     // Delete a request
                     int idToDelete = Integer.parseInt(exchange.getRequestURI().getPath().split("/")[3]);
-                    if (idToDelete < requests.size()) {
-                        requests.remove(idToDelete);
-                        response = "Request deleted successfully!";
-                    } else {
-                        response = "Request not found.";
-                        statusCode = 404;
-                    }
+                    RequestCRUD.deleteSolicitud(idToDelete);
+                    response = "Request deleted successfully!";
                     break;
 
                 default:
@@ -91,15 +86,28 @@ public class SimpleHttpServer {
 
             // Parse JSON manually
             String[] data = sb.toString().replace("{", "").replace("}", "").split(",");
-            String name = data[0].split(":")[1].replace("\"", "").trim();
-            int age = Integer.parseInt(data[1].split(":")[1].trim());
+            int ID_Solicitud = Integer.parseInt(data[0].split(":")[1].replace("\"", "").trim());
+            int ID_Tecnico = Integer.parseInt(data[1].split(":")[1].replace("\"", "").trim());
+            int ID_Cliente = Integer.parseInt(data[2].split(":")[1].replace("\"", "").trim());
+            String descripcion = data[3].split(":")[1].replace("\"", "").trim();
+            String tema = data[4].split(":")[1].replace("\"", "").trim();
+            Date fechaCreacion = new Date(); // Establece la fecha de creación como ahora
+            Date fechaCompletado = null; // Inicializa como null, debe ser asignado en la actualización si se requiere
+            Date fechaAsistencia = null; // Inicializa como null, debe ser asignado en la actualización si se requiere
+            String estado = "EN_CURSO"; // Estado inicial por defecto
+            String prioridad = "NINGUNA"; // Prioridad inicial por defecto
 
+<<<<<<< HEAD:src/main/java/com/technicalService/SimpleHttpServer.java
             // Use requests.size() to assign a unique ID
             int ID_Solicitud = requests.size();
             return new Request(ID_Solicitud, name, age);
+=======
+            // Use requests.size() to assign a unique ID (no es necesario aquí, ya que se gestionan por RequestCRUD)
+            return new Request(ID_Solicitud, ID_Tecnico, ID_Cliente, descripcion, tema,
+                               fechaCreacion, fechaCompletado, fechaAsistencia,
+                               estado, prioridad);
+>>>>>>> dev:src/main/java/com/technicalService/RequestController.java
         }
     }
 }
-
-
 
