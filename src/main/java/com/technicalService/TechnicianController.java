@@ -31,7 +31,7 @@ public class TechnicianController {
                 case "POST":
                     // Create a new request
                     Technician newTechnician = readTechnicianFromTechnician(exchange);
-                    TechnicianCRUD.insertTecnico(newTechnician.getIdSolicitud(),
+                    TechnicianCRUD.insertTecnico(newTechnician.getId(),
                             newTechnician.getName(), newTechnician.getApellido());
                     
                     response = "technician added successfully!";
@@ -65,14 +65,13 @@ public class TechnicianController {
 
             // Parse JSON manually
             String[] data = sb.toString().replace("{", "").replace("}", "").split(",");
-            int ID_cliente = Integer.parseInt(data[0].split(":")[1].replace("\"", "").trim());
-            int ID_solicitud = Integer.parseInt(data[1].split(":")[1].replace("\"", "").trim());
-            String nombre = data[2].split(":")[1].replace("\"", "").trim();
-            String apellidos = data[3].split(":")[1].replace("\"", "").trim();
+            int id = Integer.parseInt(data[0].split(":")[1].replace("\"", "").trim());
+            String nombre = data[1].split(":")[1].replace("\"", "").trim();
+            String apellidos = data[2].split(":")[1].replace("\"", "").trim();
             
 
             // Use requests.size() to assign a unique ID (no es necesario aquí, ya que se gestionan por RequestCRUD)
-            return new Technician(ID_cliente, ID_solicitud,nombre,apellidos);
+            return new Technician(id, nombre,apellidos);
         }
     }
 }

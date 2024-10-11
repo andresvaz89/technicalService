@@ -8,7 +8,7 @@ public class UserCRUD {
   private static List<User> usuarios = new ArrayList<>(); // In-memory storage
       
    // Insertar un usuario
-    public static void insertUsuario(String username, String password) {
+    public static void insertUsuario(int Id_usuario,String username, String password) {
         int ID_usuario = usuarios.size() + 1;
         User newUser = new User(ID_usuario,username,password);
         usuarios.add(newUser);

@@ -9,9 +9,9 @@ public class TechnicianCRUD {
     private static List<Technician> tecnicos = new ArrayList<>(); // In-memory storage
   
    // Insertar un tecnico
-    public static void insertTecnico(int ID_solicitud, String nombre, String apellidos) {
+    public static void insertTecnico(int id, String nombre, String apellidos) {
         int ID_tecnico= tecnicos.size() + 1;
-        Technician newTecni = new Technician(ID_tecnico,ID_solicitud, nombre, apellidos);
+        Technician newTecni = new Technician(id, ID_tecnico, nombre, apellidos);
         tecnicos.add(newTecni);
         System.out.println("Tecnico creado correctamente: " + newTecni);
     }

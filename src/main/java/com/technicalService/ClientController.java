@@ -31,8 +31,7 @@ public class ClientController {
                 case "POST":
                     // Create a new request
                     Client newClient = readClientFromClient(exchange);
-                    ClientCRUD.insertClient(newClient.getId_solicitud(),
-                            newClient.getNombre(), newClient.getApellido());
+                    ClientCRUD.insertClient(newClient.getId_cliente(),newClient.getNombre(), newClient.getApellido());
                     
                     response = "Client added successfully!";
                     break;
@@ -66,13 +65,12 @@ public class ClientController {
             // Parse JSON manually
             String[] data = sb.toString().replace("{", "").replace("}", "").split(",");
             int ID_cliente = Integer.parseInt(data[0].split(":")[1].replace("\"", "").trim());
-            int ID_solicitud = Integer.parseInt(data[1].split(":")[1].replace("\"", "").trim());
-            String nombre = data[2].split(":")[1].replace("\"", "").trim();
-            String apellidos = data[3].split(":")[1].replace("\"", "").trim();
+            String nombre = data[1].split(":")[1].replace("\"", "").trim();
+            String apellidos = data[2].split(":")[1].replace("\"", "").trim();
             
 
             // Use requests.size() to assign a unique ID (no es necesario aquí, ya que se gestionan por RequestCRUD)
-            return new Client(ID_cliente, ID_solicitud,nombre,apellidos);
+            return new Client(ID_cliente,nombre,apellidos);
         }
     }
 }

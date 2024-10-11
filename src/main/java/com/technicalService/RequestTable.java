@@ -14,9 +14,9 @@ public class RequestTable {
                 + "ID_Tecnico INT FOREIGN KEY,"
                 + "descripcion VARCHAR(255),"
                 + "tema VARCHAR(255),"
-                + "fecha_creacion DATE)"
-                + "fecha_completado DATE)"
-                + "fecha_asistencia DATE)"
+                + "fechaCreacion DATE)"
+                + "fechaCompletado DATE)"
+                + "fechaAsistencia DATE)"
                 + "estado VARCHAR(255) )"
                 + "prioridad VARCHAR(255))";
 

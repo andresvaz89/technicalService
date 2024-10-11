@@ -32,7 +32,7 @@ public class UserController {
                 
                     // Create a new user
                     User newUser = readUserFromUser(exchange);
-                    UserCRUD.insertUsuario(newUser.getUsername(),newUser.getPassword());
+                    UserCRUD.insertUsuario(newUser.getId_usuario(),newUser.getUsername(),newUser.getPassword());
                     response = "User added successfully!";
                     break;
 
