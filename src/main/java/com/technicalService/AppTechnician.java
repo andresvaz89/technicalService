@@ -103,6 +103,8 @@ public class AppTechnician{
                 System.out.println("No hay solicitudes en la lista.");
             }
             break;
+            case 6:
+            break;
                     
             default:
                 System.out.println("Esa opción no existe");

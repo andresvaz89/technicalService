@@ -109,10 +109,12 @@ public class AppClient{
                 System.out.println("No hay solicitudes en la lista.");
             }
             break;
+            case 5:
+            break;
                     
             default:
                 System.out.println("Esa opción no existe");
-                break;
+            break;
         }
     } while (opcion != 5); 
 
